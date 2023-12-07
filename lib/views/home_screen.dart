@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:football_quiz/views/progress/view/progress_screen.dart';
 import 'package:football_quiz/views/settings/view/settings_screen.dart';
 import '../consts/app_colors.dart';
+import '../data/models/news_model.dart';
 import '../util/app_routes.dart';
 import 'calendar/view/calendar_screen.dart';
 
@@ -22,7 +23,9 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Widget> homeWidgets = [
     const CategoriesScreen(),
     ProgressScreen(),
-    const NewsScreen(),
+    NewsScreen(
+      newsModel: news,
+    ),
     const CalendarScreen(),
     const SettingsScreen()
   ];
@@ -34,44 +37,55 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                'assets/icons/categories.svg',
-                width: 24.0,
-                height: 24.0,
-                color: currentIndex == 0 ? AppColors.lightBlueColor : null,
-              ),
-              label: 'Categories'),
+            icon: SvgPicture.asset(
+              'assets/icons/categories.svg',
+              width: 80.0,
+              height: 40.0,
+              color: currentIndex == 0
+                  ? AppColors.lightBlueColor
+                  : AppColors.lightGrayColor,
+            ),
+            label: 'Categories',
+          ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               'assets/icons/progress.svg',
-              width: 24.0,
-              height: 24.0,
-              color: currentIndex == 1 ? AppColors.lightBlueColor : null,
+              width: 80.0,
+              height: 40.0,
+              color: currentIndex == 1
+                  ? AppColors.lightBlueColor
+                  : AppColors.lightGrayColor,
             ),
             label: 'Progress',
           ),
           BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 'assets/icons/news.svg',
-                width: 24.0,
-                height: 24.0,
-                color: currentIndex == 2 ? AppColors.lightBlueColor : null,
+                width: 80.0,
+                height: 40.0,
+                color: currentIndex == 2
+                    ? AppColors.lightBlueColor
+                    : AppColors.lightGrayColor,
               ),
               label: 'News'),
           BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 'assets/icons/calendar.svg',
-                width: 24.0,
-                height: 24.0,
-                color: currentIndex == 3 ? AppColors.lightBlueColor : null,
+                width: 80.0,
+                height: 40.0,
+                color: currentIndex == 3
+                    ? AppColors.lightBlueColor
+                    : AppColors.lightGrayColor,
               ),
               label: 'Calendar'),
           BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 'assets/icons/settings.svg',
-                width: 24.0,
-                height: 24.0,
-                color: currentIndex == 4 ? AppColors.lightBlueColor : null,
+                width: 80.0,
+                height: 40.0,
+                color: currentIndex == 4
+                    ? AppColors.lightBlueColor
+                    : AppColors.lightGrayColor,
               ),
               label: 'Settings'),
         ],
@@ -80,9 +94,18 @@ class _HomeScreenState extends State<HomeScreen> {
             currentIndex = index;
           });
         },
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: AppColors.blueColor,
+        unselectedItemColor: AppColors.lightGrayColor,
         selectedItemColor: AppColors.lightBlueColor,
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        selectedLabelStyle: TextStyle(
+          color: AppColors.lightBlueColor,
+        ),
+        unselectedLabelStyle: TextStyle(
+          color: AppColors.lightGrayColor,
+        ),
       ),
     );
   }

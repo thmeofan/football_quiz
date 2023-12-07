@@ -6,7 +6,7 @@ class RulesQuestions extends Question {
       required super.options,
       super.isLocked,
       super.selectedOption,
-      super.category = 'rules'});
+      super.category = 'Rules'});
 }
 
 final rulesQuestions = [

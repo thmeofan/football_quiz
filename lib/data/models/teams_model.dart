@@ -2,7 +2,7 @@ import 'package:football_quiz/data/models/quiz_model.dart';
 
 class TeamsQuestions extends Question {
   TeamsQuestions(
-      {required super.text, required super.options, super.category = 'teams'});
+      {required super.text, required super.options, super.category = 'Teams'});
 }
 
 final teamQuestions = [
