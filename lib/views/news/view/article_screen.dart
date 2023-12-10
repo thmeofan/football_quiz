@@ -1,6 +1,7 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:football_quiz/consts/app_text_styles/news_text_style.dart';
 import 'package:football_quiz/data/models/news_model.dart';
 
 import '../../../consts/app_colors.dart';
@@ -38,8 +39,8 @@ class ArticleScreen extends StatelessWidget {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              AppColors.blueColor, // Start color of the gradient (top)
-              AppColors.blackColor, // End color of the gradient (bottom)
+              AppColors.blueColor,
+              AppColors.blackColor,
             ],
           ),
         ),
@@ -47,19 +48,37 @@ class ArticleScreen extends StatelessWidget {
           SizedBox(
             height: screenSize.height * 0.1,
           ),
-          Text(newsModel.date),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8.0),
-            child: FancyShimmerImage(
-              height: screenSize.height * 0.3,
-              width: screenSize.width * 0.9,
-              boxFit: BoxFit.cover,
-              imageUrl: newsModel.imageUrl,
+          Text(
+            newsModel.date,
+            style: NewsTextStyle.date,
+            textAlign: TextAlign.center,
+          ),
+          Expanded(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: FancyShimmerImage(
+                // height: screenSize.height * 0.3,
+                width: screenSize.width * 0.9,
+                boxFit: BoxFit.cover,
+                imageUrl: newsModel.imageUrl,
+              ),
             ),
           ),
-          Text(newsModel.title),
-          Flexible(
-            child: Text(newsModel.text),
+          Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: screenSize.width * 0.04,
+                vertical: screenSize.width * 0.01),
+            child: Text(
+              newsModel.title,
+              style: NewsTextStyle.articleTitle,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(screenSize.width * 0.04),
+            child: Text(
+              newsModel.text,
+              style: NewsTextStyle.articleText,
+            ),
           ),
         ]),
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:football_quiz/consts/app_text_styles/onboarding_text_style.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../consts/app_colors.dart';
@@ -58,9 +59,14 @@ class SettingsScreen extends StatelessWidget {
                   style: const ButtonStyle(alignment: Alignment.centerLeft),
                   icon: SvgPicture.asset(
                     'assets/icons/tick_square.svg',
+                    width: 26,
+                    height: 26,
                     color: AppColors.lightBlueColor,
                   ),
-                  label: Text('Privacy Policy')),
+                  label: Text(
+                    'Privacy Policy',
+                    style: OnboardingTextStyle.introduction,
+                  )),
             ),
             ListTile(
               title: TextButton.icon(
@@ -70,9 +76,14 @@ class SettingsScreen extends StatelessWidget {
                   style: const ButtonStyle(alignment: Alignment.centerLeft),
                   icon: SvgPicture.asset(
                     'assets/icons/chat.svg',
+                    width: 26,
+                    height: 26,
                     color: AppColors.lightBlueColor,
                   ),
-                  label: Text('Terms of use')),
+                  label: const Text(
+                    'Terms of use',
+                    style: OnboardingTextStyle.introduction,
+                  )),
             ),
             ListTile(
               title: TextButton.icon(
@@ -82,9 +93,14 @@ class SettingsScreen extends StatelessWidget {
                   style: const ButtonStyle(alignment: Alignment.centerLeft),
                   icon: SvgPicture.asset(
                     'assets/icons/bag.svg',
+                    width: 26,
+                    height: 26,
                     color: AppColors.lightBlueColor,
                   ),
-                  label: Text('Subscription info')),
+                  label: Text(
+                    'Subscription info',
+                    style: OnboardingTextStyle.introduction,
+                  )),
             ),
             ListTile(
               title: TextButton.icon(
@@ -94,9 +110,14 @@ class SettingsScreen extends StatelessWidget {
                   style: const ButtonStyle(alignment: Alignment.centerLeft),
                   icon: SvgPicture.asset(
                     'assets/icons/star.svg',
+                    width: 26,
+                    height: 26,
                     color: AppColors.lightBlueColor,
                   ),
-                  label: Text('Rate app')),
+                  label: Text(
+                    'Rate app',
+                    style: OnboardingTextStyle.introduction,
+                  )),
             )
           ],
         ),

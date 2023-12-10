@@ -32,8 +32,17 @@ abstract class AppRoutes {
       case home:
         child = HomeScreen();
       case quiz:
-        List<Question> question = settings.arguments as List<Question>;
-        child = QuizScreen(questions: question);
+        List<Question> questions = settings.arguments as List<Question>;
+        void resetQuestions() {
+          for (var question in questions) {
+            question.isLocked = false;
+            question.selectedOption = null;
+          }
+        }
+        child = QuizScreen(
+          questions: questions,
+          onRetakeQuiz: resetQuestions,
+        );
       case article:
         NewsModel news = settings.arguments as NewsModel;
         child = ArticleScreen(

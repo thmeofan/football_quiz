@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:football_quiz/consts/app_colors.dart';
+import 'package:football_quiz/consts/app_text_styles/categories_text_style.dart';
 import 'package:football_quiz/views/widgets/buttons/chosen_action_button_widget.dart';
 import 'dart:async';
 import 'dart:ui' as ui;
@@ -9,9 +10,10 @@ import '../../../util/progress_manger.dart';
 import '../widgets/option_widget.dart';
 
 class QuizScreen extends StatefulWidget {
-  const QuizScreen({super.key, required this.questions});
+  const QuizScreen({super.key, required this.questions, this.onRetakeQuiz});
 
   final List<Question> questions;
+  final VoidCallback? onRetakeQuiz; // Add this callback
 
   @override
   State<QuizScreen> createState() => _QuizScreenState();
@@ -39,24 +41,17 @@ class _QuizScreenState extends State<QuizScreen> {
     return score;
   }
 
-  // void showResults() {
-  //   int score = calculateScore();
-  //   showDialog(
-  //     context: context,
-  //     builder: (BuildContext context) => AlertDialog(
-  //       title: Text("Results"),
-  //       content: Text("You scored $score out of ${widget.questions.length}."),
-  //       actions: <Widget>[
-  //         TextButton(
-  //           onPressed: () {
-  //             Navigator.of(context).pop();
-  //           },
-  //           child: Text('OK'),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
+  void resetQuiz() {
+    setState(() {
+      _isQuizFinished = false;
+      _questionNumber = 1;
+      _controller.jumpToPage(0);
+    });
+    for (var question in widget.questions) {
+      question.isLocked = false;
+      question.selectedOption = null;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +97,7 @@ class _QuizScreenState extends State<QuizScreen> {
               ),
               Text(
                 '$_questionNumber/${widget.questions.length}',
-                style: TextStyle(color: Colors.white),
+                style: CategoriesTextStyle.title,
               ),
               SizedBox(
                 height: size.width * 0.1,
@@ -146,10 +141,12 @@ class _QuizScreenState extends State<QuizScreen> {
                     border: Border.all(color: AppColors.whiteColor),
                     // borderRadius: BorderRadius.circular(8.0),
                   ),
-                  child: Text(
-                    " ${calculateScore()} / ${widget.questions.length}.",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.center,
+                  child: Center(
+                    child: Text(
+                      " ${calculateScore()} / ${widget.questions.length}.",
+                      style: CategoriesTextStyle.result,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ),
               ),
@@ -158,7 +155,12 @@ class _QuizScreenState extends State<QuizScreen> {
               height: size.height * 0.3,
             ),
             ChosenActionButton(
-                text: 'Continue', onTap: () => Navigator.of(context).pop()),
+              text: 'Continue',
+              onTap: () {
+                resetQuiz();
+                Navigator.of(context).pop();
+              },
+            ),
           ],
         ),
       );
@@ -171,7 +173,7 @@ class _QuizScreenState extends State<QuizScreen> {
             child: BackdropFilter(
               filter: ui.ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
               child: Container(
-                height: size.width * 0.3,
+                height: size.height * 0.2,
                 width: size.width * 0.88,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
@@ -185,8 +187,14 @@ class _QuizScreenState extends State<QuizScreen> {
                     width: 1.5,
                   ),
                 ),
-                child: Text(question.text),
                 padding: const EdgeInsets.all(16.0),
+                child: Center(
+                  child: Text(
+                    question.text,
+                    style: CategoriesTextStyle.question,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
               ),
             ),
           ),

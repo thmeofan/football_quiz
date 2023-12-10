@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:football_quiz/util/app_routes.dart';
 
 import 'data/repository/onboarding_repository.dart';
@@ -17,6 +18,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return MaterialApp(
       theme: ThemeData(primarySwatch: Colors.indigo),
       onGenerateRoute: AppRoutes.onGenerateRoute,

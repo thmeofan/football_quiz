@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:football_quiz/consts/app_colors.dart';
+import 'package:football_quiz/consts/app_text_styles/categories_text_style.dart';
 
 import '../../../data/models/quiz_model.dart';
 
@@ -46,7 +47,7 @@ class OptionWidget extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           // Padding inside the container
           decoration: BoxDecoration(
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: Colors.indigo,
                 spreadRadius: 4,
@@ -59,13 +60,7 @@ class OptionWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(40), // Rounded corners
           ),
           alignment: Alignment.center,
-          child: Text(
-            option.text,
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          child: Text(option.text, style: CategoriesTextStyle.category),
         ),
       ),
     );

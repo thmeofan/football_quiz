@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 import '../../../consts/app_colors.dart';
+import '../../../consts/app_text_styles/categories_text_style.dart';
 
 class CategoryButton extends StatelessWidget {
   const CategoryButton({super.key, required this.text, required this.onTap});
@@ -41,6 +42,7 @@ class CategoryButton extends StatelessWidget {
                   minimumSize: Size(232, 56),
                 ),
                 child: Text(
+                  style: CategoriesTextStyle.category,
                   text,
                 ),
               ),

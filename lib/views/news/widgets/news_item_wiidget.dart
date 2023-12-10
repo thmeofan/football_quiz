@@ -1,6 +1,7 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:football_quiz/consts/app_colors.dart';
+import 'package:football_quiz/consts/app_text_styles/news_text_style.dart';
 import 'package:football_quiz/data/models/news_model.dart';
 
 import '../../../util/app_routes.dart';
@@ -21,10 +22,10 @@ class NewsItemWidget extends StatelessWidget {
               .pushNamed(AppRoutes.article, arguments: newsModel);
         },
         child: Container(
-          height: screenSize.height * 0.18,
+          height: screenSize.height * 0.15,
           width: double.maxFinite,
           padding: EdgeInsets.symmetric(
-              vertical: screenSize.height * 0.02,
+              //     vertical: screenSize.height * 0.02,
               horizontal: screenSize.width * 0.04),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15.0),
@@ -33,8 +34,9 @@ class NewsItemWidget extends StatelessWidget {
           child: Row(
             children: [
               ClipRRect(
+                borderRadius: BorderRadius.circular(15.0),
                 child: FancyShimmerImage(
-                  height: screenSize.height * 0.3,
+                  //  height: double.infinity,
                   width: screenSize.width * 0.4,
                   boxFit: BoxFit.cover,
                   imageUrl: newsModel.imageUrl,
@@ -44,28 +46,35 @@ class NewsItemWidget extends StatelessWidget {
                 width: 10,
               ),
               Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        newsModel.title,
+                        maxLines: 1,
+                        style: NewsTextStyle.title,
+                      ),
+                      SizedBox(
+                        height: screenSize.height * 0.02,
+                      ),
+                      Expanded(
                         child: Text(
-                      newsModel.title,
-                      maxLines: 1,
-                    )),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      newsModel.text,
-                      maxLines: 3,
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      newsModel.date,
-                    ),
-                  ],
+                          newsModel.text,
+                          style: NewsTextStyle.preview,
+                          maxLines: 3,
+                        ),
+                      ),
+                      SizedBox(
+                        height: screenSize.height * 0.02,
+                      ),
+                      Text(
+                        newsModel.date,
+                        style: NewsTextStyle.date,
+                      ),
+                    ],
+                  ),
                 ),
               )
             ],

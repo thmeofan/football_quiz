@@ -28,70 +28,75 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              AppColors.blueColor, // Start color of the gradient (top)
-              AppColors.blackColor, // End color of the gradient (bottom)
-            ],
+    return SafeArea(
+      child: Scaffold(
+        body: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                AppColors.blueColor,
+                AppColors.blackColor,
+              ],
+            ),
           ),
-        ),
-        child: Column(
-          children: [
-            // Carousel
-            SizedBox(
-              height: size.height * 0.8,
-              child: CarouselSlider(
-                items: [
-                  IntroductionWidget(),
-                  // Make sure this widget fits the desired height
-                  ReviewWidget(),
-                  // Make sure this widget fits the desired height
-                ],
-                carouselController: _carouselController,
-                options: CarouselOptions(
-                  autoPlay: false,
-                  enlargeCenterPage: true,
-                  viewportFraction: 1.0,
-                  aspectRatio: 2.0,
-                  onPageChanged: (index, reason) {
-                    setState(() {
-                      _current = index;
-                    });
-                  },
+          child: Column(
+            children: [
+              Expanded(
+                child: CarouselSlider(
+                  items: [
+                    IntroductionWidget(),
+                    ReviewWidget(),
+                  ],
+                  carouselController: _carouselController,
+                  options: CarouselOptions(
+                    height: size.height * 0.7,
+                    autoPlay: false,
+                    enlargeCenterPage: true,
+                    viewportFraction: 1,
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        _current = index;
+                      });
+                    },
+                  ),
                 ),
               ),
-            ),
-            // Dots indicator
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(2, (index) {
-                return Container(
-                  width: 8.0,
-                  height: 8.0,
-                  margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: _current == index
-                        ? AppColors.lightBlueColor
-                        : AppColors.darkGrayColor,
-                  ),
-                );
-              }),
-            ),
-            // Button
-            ChosenActionButton(
-              text: 'Continue',
-              onTap: () async {
-                context.read<OnboardingCubit>().setFirstTime();
-                Navigator.pushReplacementNamed(context, AppRoutes.home);
-              },
-            ),
-          ],
+              SizedBox(
+                height: size.height * 0.25,
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(2, (index) {
+                        return Container(
+                          width: 8.0,
+                          height: 8.0,
+                          margin: const EdgeInsets.symmetric(
+                              vertical: 10.0, horizontal: 2.0),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: _current == index
+                                ? AppColors.lightBlueColor
+                                : AppColors.darkGrayColor,
+                          ),
+                        );
+                      }),
+                    ),
+                    // Button
+                    ChosenActionButton(
+                      text: 'Next',
+                      onTap: () async {
+                        context.read<OnboardingCubit>().setFirstTime();
+                        Navigator.pushReplacementNamed(context, AppRoutes.home);
+                      },
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
