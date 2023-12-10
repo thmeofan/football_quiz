@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:football_quiz/data/models/news_model.dart';
 import 'package:football_quiz/data/models/quiz_model.dart';
 import 'package:football_quiz/views/category/view/quiz_screen.dart';
+import 'package:football_quiz/views/news/view/news_screen.dart';
 
 import '../blocs/onboarding_cubit/onboarding_cubit.dart';
 import '../data/repository/onboarding_repository.dart';
 import '../views/home_screen.dart';
+import '../views/news/view/article_screen.dart';
 import '../views/onboarding/view/onboarding_screen.dart';
 
 abstract class AppRoutes {
@@ -17,6 +20,7 @@ abstract class AppRoutes {
   static const calendar = 'calendar';
   static const settings = 'settings';
   static const quiz = 'quiz';
+  static const article = 'article';
 
   static MaterialPageRoute onGenerateRoute(RouteSettings settings) {
     final Widget child;
@@ -28,8 +32,22 @@ abstract class AppRoutes {
       case home:
         child = HomeScreen();
       case quiz:
-        List<Question> question = settings.arguments as List<Question>;
-        child = QuizScreen(questions: question);
+        List<Question> questions = settings.arguments as List<Question>;
+        void resetQuestions() {
+          for (var question in questions) {
+            question.isLocked = false;
+            question.selectedOption = null;
+          }
+        }
+        child = QuizScreen(
+          questions: questions,
+          onRetakeQuiz: resetQuestions,
+        );
+      case article:
+        NewsModel news = settings.arguments as NewsModel;
+        child = ArticleScreen(
+          newsModel: news,
+        );
       default:
         child = BlocProvider(
           create: (context) => onboardingCubit,

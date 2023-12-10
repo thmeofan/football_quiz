@@ -4,7 +4,7 @@ class PlayersQuestions extends Question {
   PlayersQuestions({
     required super.text,
     required super.options,
-    super.category = 'players',
+    super.category = 'Players',
   });
 }
 

@@ -3,9 +3,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 class OnboardingRepository {
   static final OnboardingRepository onboardingRepository =
       OnboardingRepository.internal();
+
   factory OnboardingRepository() {
     return onboardingRepository;
   }
+
   OnboardingRepository.internal();
 
   Future<bool> checkFirstTime() async {

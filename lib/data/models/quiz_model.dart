@@ -1,6 +1,7 @@
 class Question {
   final String text;
   final String category;
+
   // final Category;
   final List<Option> options;
   bool isLocked;

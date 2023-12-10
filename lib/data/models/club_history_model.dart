@@ -1,10 +1,11 @@
 import 'package:football_quiz/data/models/quiz_model.dart';
 
 class ClubHistoryQuestions extends Question {
-
-
-
-  ClubHistoryQuestions(  {required super.text, required super.options,super.category='club history',});
+  ClubHistoryQuestions({
+    required super.text,
+    required super.options,
+    super.category = 'Club history',
+  });
 }
 
 final clubHistoryQuestions = [
