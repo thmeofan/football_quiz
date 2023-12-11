@@ -10,40 +10,38 @@ class IntroductionWidget extends StatelessWidget {
     return Container(
       margin:
           EdgeInsets.symmetric(horizontal: 10, vertical: size.width * 0.015),
-      child: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(
-                  left: 12.0,
-                  top: size.width * 0.04,
-                  right: 12.0,
-                  bottom: size.width * 0.02),
-              child: Image.asset(
-                'assets/banner.png',
-                height: size.height * 0.3,
-              ),
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(
+                left: 12.0,
+                top: size.width * 0.04,
+                right: 12.0,
+                bottom: size.width * 0.02),
+            child: Image.asset(
+              'assets/banner.png',
+              height: size.height * 0.3,
             ),
-            const Text(
-              'Football Quiz',
-              style: OnboardingTextStyle.introduction,
+          ),
+          const Text(
+            'Football Quiz',
+            style: OnboardingTextStyle.introduction,
+            textAlign: TextAlign.center,
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+              left: 15.0,
+              top: size.width * 0.01,
+              right: 15.0,
+              bottom: size.width * 0.01,
+            ),
+            child: const Text(
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus.',
               textAlign: TextAlign.center,
+              style: OnboardingTextStyle.description,
             ),
-            Padding(
-              padding: EdgeInsets.only(
-                left: 15.0,
-                top: size.width * 0.01,
-                right: 15.0,
-                bottom: size.width * 0.01,
-              ),
-              child: const Text(
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, ultrices mauris. Maecenas vitae mattis tellus.',
-                textAlign: TextAlign.center,
-                style: OnboardingTextStyle.description,
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -25,6 +25,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
   }
 
   void fetchTodayMatches() async {
+    if (!mounted) return;
+
     setState(() {
       _isLoading = true;
       _errorMessage = '';
@@ -32,8 +34,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
 
     try {
       var todayMatches = await apiRepository.fetchTodayMatches();
+      if (!mounted) return;
+
       if (todayMatches.isEmpty) {
-        // If no matches today, try fetching other matches
         fetchMatches();
       } else {
         setState(() {
@@ -42,6 +45,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
         });
       }
     } catch (e) {
+      if (!mounted) return;
+
       setState(() {
         _errorMessage = e.toString();
         _isLoading = false;
@@ -50,17 +55,24 @@ class _CalendarScreenState extends State<CalendarScreen> {
   }
 
   void fetchMatches() async {
+    if (!mounted) return;
+
     setState(() {
       _isLoading = true;
     });
 
     try {
       var fetchedMatches = await apiRepository.fetchMatches();
+
+      if (!mounted) return;
+
       setState(() {
         matches = fetchedMatches;
         _isLoading = false;
       });
     } catch (e) {
+      if (!mounted) return;
+
       setState(() {
         _errorMessage = e.toString();
         _isLoading = false;
@@ -88,7 +100,22 @@ class _CalendarScreenState extends State<CalendarScreen> {
   }
 
   Widget _buildLoadingIndicator() {
-    return Center(child: CircularProgressIndicator());
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            AppColors.blueColor,
+            AppColors.blackColor,
+          ],
+        ),
+      ),
+      child: const Center(
+          child: CircularProgressIndicator(
+        color: AppColors.blueColor,
+      )),
+    );
   }
 
   Widget _buildBody(Size size) {
@@ -104,7 +131,30 @@ class _CalendarScreenState extends State<CalendarScreen> {
   }
 
   Widget _buildErrorWidget() {
-    return Center(child: Text(_errorMessage));
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            AppColors.blueColor,
+            AppColors.blackColor,
+          ],
+        ),
+      ),
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Text(
+            _errorMessage,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: AppColors.lightBlueColor,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   Widget _buildNoMatchesWidget() {

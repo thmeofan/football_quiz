@@ -28,75 +28,76 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                AppColors.blueColor,
-                AppColors.blackColor,
-              ],
-            ),
-          ),
-          child: Column(
-            children: [
-              Expanded(
-                child: CarouselSlider(
-                  items: [
-                    IntroductionWidget(),
-                    ReviewWidget(),
-                  ],
-                  carouselController: _carouselController,
-                  options: CarouselOptions(
-                    height: size.height * 0.7,
-                    autoPlay: false,
-                    enlargeCenterPage: true,
-                    viewportFraction: 1,
-                    onPageChanged: (index, reason) {
-                      setState(() {
-                        _current = index;
-                      });
-                    },
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: size.height * 0.25,
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: List.generate(2, (index) {
-                        return Container(
-                          width: 8.0,
-                          height: 8.0,
-                          margin: const EdgeInsets.symmetric(
-                              vertical: 10.0, horizontal: 2.0),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: _current == index
-                                ? AppColors.lightBlueColor
-                                : AppColors.darkGreyColor,
-                          ),
-                        );
-                      }),
-                    ),
-                    // Button
-                    ChosenActionButton(
-                      text: 'Next',
-                      onTap: () async {
-                        context.read<OnboardingCubit>().setFirstTime();
-                        Navigator.pushReplacementNamed(context, AppRoutes.home);
-                      },
-                    ),
-                  ],
-                ),
-              )
+    return Scaffold(
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              AppColors.blueColor,
+              AppColors.blackColor,
             ],
           ),
+        ),
+        child: Column(
+          children: [
+            SizedBox(
+              height: size.height * 0.1,
+            ),
+            Expanded(
+              child: CarouselSlider(
+                items: [
+                  IntroductionWidget(),
+                  ReviewWidget(),
+                ],
+                carouselController: _carouselController,
+                options: CarouselOptions(
+                  height: size.height * 0.6,
+                  autoPlay: true,
+                  enlargeCenterPage: true,
+                  viewportFraction: 1,
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      _current = index;
+                    });
+                  },
+                ),
+              ),
+            ),
+            SizedBox(
+              height: size.height * 0.25,
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(2, (index) {
+                      return Container(
+                        width: 8.0,
+                        height: 8.0,
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 10.0, horizontal: 2.0),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: _current == index
+                              ? AppColors.lightBlueColor
+                              : AppColors.darkGreyColor,
+                        ),
+                      );
+                    }),
+                  ),
+                  // Button
+                  ChosenActionButton(
+                    text: 'Next',
+                    onTap: () async {
+                      context.read<OnboardingCubit>().setFirstTime();
+                      Navigator.pushReplacementNamed(context, AppRoutes.home);
+                    },
+                  ),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );

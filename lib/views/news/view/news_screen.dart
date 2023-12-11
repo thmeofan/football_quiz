@@ -13,41 +13,40 @@ class NewsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
 
-    return SafeArea(
-        child: Scaffold(
-            extendBodyBehindAppBar: true,
-            appBar: AppBar(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              title: const Text(
-                'Football news',
-              ),
-              centerTitle: true,
+    return Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: const Text(
+            'Football news',
+          ),
+          centerTitle: true,
+        ),
+        body: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                AppColors.blueColor,
+                AppColors.blackColor,
+              ],
             ),
-            body: Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    AppColors.blueColor,
-                    AppColors.blackColor,
-                  ],
-                ),
+          ),
+          child: Column(children: [
+            Expanded(
+              child: ListView.builder(
+                itemCount: newsModel.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return NewsItemWidget(newsModel: newsModel[index]);
+                },
               ),
-              child: Column(children: [
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: newsModel.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return NewsItemWidget(newsModel: newsModel[index]);
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: screenSize.height * 0.02,
-                ),
-              ]),
-            )));
+            ),
+            SizedBox(
+              height: screenSize.height * 0.02,
+            ),
+          ]),
+        ));
   }
 }
