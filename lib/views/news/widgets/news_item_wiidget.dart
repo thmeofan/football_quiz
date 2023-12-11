@@ -24,9 +24,7 @@ class NewsItemWidget extends StatelessWidget {
         child: Container(
           height: screenSize.height * 0.15,
           width: double.maxFinite,
-          padding: EdgeInsets.symmetric(
-              //     vertical: screenSize.height * 0.02,
-              horizontal: screenSize.width * 0.04),
+          padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.04),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15.0),
             color: AppColors.blueColor,
@@ -36,7 +34,6 @@ class NewsItemWidget extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(15.0),
                 child: FancyShimmerImage(
-                  //  height: double.infinity,
                   width: screenSize.width * 0.4,
                   boxFit: BoxFit.cover,
                   imageUrl: newsModel.imageUrl,

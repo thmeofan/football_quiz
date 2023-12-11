@@ -13,7 +13,7 @@ class NewsTextStyle {
     fontFamily: 'Inter',
     fontSize: 10.0,
     fontWeight: FontWeight.w300,
-    color: AppColors.lightGrayColor,
+    color: AppColors.lightGreyColor,
   );
   static const TextStyle date = TextStyle(
     fontFamily: 'Inter',
@@ -31,6 +31,6 @@ class NewsTextStyle {
     fontFamily: 'Inter',
     fontSize: 14.0,
     fontWeight: FontWeight.w400,
-    color: AppColors.lightGrayColor,
+    color: AppColors.lightGreyColor,
   );
 }

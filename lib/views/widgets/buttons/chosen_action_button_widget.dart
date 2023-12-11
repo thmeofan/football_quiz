@@ -26,7 +26,7 @@ class ChosenActionButton extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              AppColors.darkGrayColor, // Start color of the gradient
+              AppColors.darkGreyColor, // Start color of the gradient
               AppColors.lightBlueColor, // End color of the gradient
             ],
             begin: Alignment.topLeft, // Start of the gradient

@@ -10,7 +10,6 @@ class ProgressScreen extends StatefulWidget {
 }
 
 class _ProgressScreenState extends State<ProgressScreen> {
-  // This map will hold the scores for each category
   Map<String, int> categoryScores = {};
 
   @override
@@ -19,19 +18,16 @@ class _ProgressScreenState extends State<ProgressScreen> {
     loadScores();
   }
 
-  // Load scores from SharedPreferences
   Future<void> loadScores() async {
     final prefs = await SharedPreferences.getInstance();
-    // Assuming you have a set list of categories
+
     final categories = ['Rules', 'Teams', 'Players', 'Club history'];
 
-    // Populate the categoryScores map
     Map<String, int> scores = {};
     for (String category in categories) {
       scores[category] = prefs.getInt(category) ?? 0;
     }
 
-    // Update the state with the new scores
     setState(() {
       categoryScores = scores;
     });
@@ -101,7 +97,6 @@ class _ProgressScreenState extends State<ProgressScreen> {
                       borderRadius: BorderRadius.circular(8),
                       color: Colors.white.withOpacity(0.2),
                       border: Border.all(color: AppColors.whiteColor),
-                      // borderRadius: BorderRadius.circular(8.0),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,

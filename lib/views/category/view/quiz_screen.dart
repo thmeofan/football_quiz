@@ -139,7 +139,6 @@ class _QuizScreenState extends State<QuizScreen> {
                     borderRadius: BorderRadius.circular(8),
                     color: Colors.white.withOpacity(0.2),
                     border: Border.all(color: AppColors.whiteColor),
-                    // borderRadius: BorderRadius.circular(8.0),
                   ),
                   child: Center(
                     child: Text(
@@ -173,7 +172,7 @@ class _QuizScreenState extends State<QuizScreen> {
             child: BackdropFilter(
               filter: ui.ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
               child: Container(
-                height: size.height * 0.2,
+                height: size.height * 0.3,
                 width: size.width * 0.88,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
@@ -183,11 +182,11 @@ class _QuizScreenState extends State<QuizScreen> {
                         ? (question.selectedOption?.isCorrect ?? false
                             ? AppColors.lightBlueColor
                             : AppColors.redColor)
-                        : AppColors.lightGrayColor,
+                        : AppColors.lightGreyColor,
                     width: 1.5,
                   ),
                 ),
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Center(
                   child: Text(
                     question.text,
@@ -199,7 +198,7 @@ class _QuizScreenState extends State<QuizScreen> {
             ),
           ),
           SizedBox(
-            height: size.height * 0.3,
+            height: size.height * 0.2,
           ),
           Expanded(
             child: OptionWidget(
@@ -248,6 +247,6 @@ class _QuizScreenState extends State<QuizScreen> {
         return AppColors.lightBlueColor;
       }
     }
-    return AppColors.lightGrayColor;
+    return AppColors.lightGreyColor;
   }
 }

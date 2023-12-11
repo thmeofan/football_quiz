@@ -19,12 +19,12 @@ class CalendarTextStyle {
     fontFamily: 'Inter',
     fontSize: 10.0,
     fontWeight: FontWeight.w400,
-    color: AppColors.lightGrayColor,
+    color: AppColors.lightGreyColor,
   );
   static const TextStyle score = TextStyle(
     fontFamily: 'Inter',
     fontSize: 10.0,
     fontWeight: FontWeight.w700,
-    color: AppColors.lightGrayColor,
+    color: AppColors.lightGreyColor,
   );
 }

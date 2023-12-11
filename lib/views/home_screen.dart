@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:football_quiz/views/progress/view/progress_screen.dart';
 import 'package:football_quiz/views/settings/view/settings_screen.dart';
 import '../consts/app_colors.dart';
 import '../data/models/news_model.dart';
-import '../util/app_routes.dart';
 import 'calendar/view/calendar_screen.dart';
 
 import 'category/view/categories_screen.dart';
@@ -43,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 40.0,
               color: currentIndex == 0
                   ? AppColors.lightBlueColor
-                  : AppColors.lightGrayColor,
+                  : AppColors.lightGreyColor,
             ),
             label: 'Categories',
           ),
@@ -54,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 40.0,
               color: currentIndex == 1
                   ? AppColors.lightBlueColor
-                  : AppColors.lightGrayColor,
+                  : AppColors.lightGreyColor,
             ),
             label: 'Progress',
           ),
@@ -65,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 40.0,
                 color: currentIndex == 2
                     ? AppColors.lightBlueColor
-                    : AppColors.lightGrayColor,
+                    : AppColors.lightGreyColor,
               ),
               label: 'News'),
           BottomNavigationBarItem(
@@ -75,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 40.0,
                 color: currentIndex == 3
                     ? AppColors.lightBlueColor
-                    : AppColors.lightGrayColor,
+                    : AppColors.lightGreyColor,
               ),
               label: 'Calendar'),
           BottomNavigationBarItem(
@@ -85,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 40.0,
                 color: currentIndex == 4
                     ? AppColors.lightBlueColor
-                    : AppColors.lightGrayColor,
+                    : AppColors.lightGreyColor,
               ),
               label: 'Settings'),
         ],
@@ -96,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         type: BottomNavigationBarType.fixed,
         backgroundColor: AppColors.blueColor,
-        unselectedItemColor: AppColors.lightGrayColor,
+        unselectedItemColor: AppColors.lightGreyColor,
         selectedItemColor: AppColors.lightBlueColor,
         showSelectedLabels: false,
         showUnselectedLabels: false,
@@ -104,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
           color: AppColors.lightBlueColor,
         ),
         unselectedLabelStyle: TextStyle(
-          color: AppColors.lightGrayColor,
+          color: AppColors.lightGreyColor,
         ),
       ),
     );

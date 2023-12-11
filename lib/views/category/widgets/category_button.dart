@@ -19,16 +19,13 @@ class CategoryButton extends StatelessWidget {
           right: size.width * 0.1,
         ),
         child: ClipRRect(
-          // Use ClipRRect to clip the blur effect to the border radius
           borderRadius: BorderRadius.circular(40),
           child: BackdropFilter(
             filter: ui.ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-            // Adjust the blur intensity
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(40),
                 color: Colors.white.withOpacity(0.2),
-                // Apply semi-transparent white color
                 border: Border.all(
                   color: AppColors.whiteColor,
                   width: 1.5,
