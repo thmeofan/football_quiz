@@ -86,17 +86,21 @@ class _ProgressScreenState extends State<ProgressScreen> {
             SizedBox(
               height: size.height * 0.05,
             ),
-            ClipRect(
-              child: BackdropFilter(
-                filter: ui.ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.2),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: size.width * 0.2),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: BackdropFilter(
+                  filter: ui.ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
                   child: Container(
-                    height: size.width * 0.7,
+                    padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
                       color: Colors.white.withOpacity(0.2),
-                      border: Border.all(color: AppColors.whiteColor),
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                        color: AppColors.whiteColor,
+                        width: 1.0,
+                      ),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,

@@ -14,8 +14,7 @@ class ArticleScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    return SafeArea(
-        child: Scaffold(
+    return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         centerTitle: true,
@@ -44,44 +43,50 @@ class ArticleScreen extends StatelessWidget {
             ],
           ),
         ),
-        child: Column(children: [
-          SizedBox(
-            height: screenSize.height * 0.1,
-          ),
-          Text(
-            newsModel.date,
-            style: NewsTextStyle.date,
-            textAlign: TextAlign.center,
-          ),
-          Expanded(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: FancyShimmerImage(
-                // height: screenSize.height * 0.3,
-                width: screenSize.width * 0.9,
-                boxFit: BoxFit.cover,
-                imageUrl: newsModel.imageUrl,
+        child: Column(
+          children: [
+            SizedBox(
+              height: screenSize.height * 0.1,
+            ),
+            Text(
+              newsModel.date,
+              style: NewsTextStyle.date,
+              textAlign: TextAlign.center,
+            ),
+            Container(
+              height: screenSize.height *
+                  0.4, // Set the image height to 40% of the screen height
+              width: screenSize.width * 0.9,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: FancyShimmerImage(
+                  boxFit: BoxFit.cover,
+                  imageUrl: newsModel.imageUrl,
+                ),
               ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: screenSize.width * 0.04,
-                vertical: screenSize.width * 0.01),
-            child: Text(
-              newsModel.title,
-              style: NewsTextStyle.articleTitle,
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: screenSize.width * 0.04,
+                  vertical: screenSize.width * 0.01),
+              child: Text(
+                newsModel.title,
+                style: NewsTextStyle.articleTitle,
+              ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(screenSize.width * 0.04),
-            child: Text(
-              newsModel.text,
-              style: NewsTextStyle.articleText,
+            Expanded(
+              // This will make the remaining space scrollable
+              child: SingleChildScrollView(
+                padding: EdgeInsets.all(screenSize.width * 0.04),
+                child: Text(
+                  newsModel.text,
+                  style: NewsTextStyle.articleText,
+                ),
+              ),
             ),
-          ),
-        ]),
+          ],
+        ),
       ),
-    ));
+    );
   }
 }

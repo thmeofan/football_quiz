@@ -17,7 +17,8 @@ class ApiRepository {
       final result = json.decode(response.body);
       return result['matches'] ?? [];
     } else {
-      throw Exception('Failed to load today\'s matches');
+      throw Exception(
+          'Failed to load today\'s matches. Try enter the screen again');
     }
   }
 
@@ -31,7 +32,7 @@ class ApiRepository {
       final result = json.decode(response.body);
       return result['matches'] ?? [];
     } else {
-      throw Exception('Failed to load matches');
+      throw Exception('Failed to load matches. Try enter the screen again');
     }
   }
 }
