@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../consts/app_colors.dart';
 import '../../../data/models/news_model.dart';
@@ -24,19 +23,6 @@ class NewsScreen extends StatelessWidget {
                 'Football news',
               ),
               centerTitle: true,
-              // actions: <Widget>[
-              //   IconButton(
-              //     icon: SvgPicture.asset(
-              //       'assets/icons/21-san.svg',
-              //       width: 24.0,
-              //       height: 24.0,
-              //     ),
-              //     onPressed: () => Navigator.pushNamed(
-              //       context,
-              //       AppRoutes.qrScreen,
-              //     ),
-              //   ),
-              // ],
             ),
             body: Container(
               decoration: const BoxDecoration(
@@ -44,8 +30,8 @@ class NewsScreen extends StatelessWidget {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    AppColors.blueColor, // Start color of the gradient (top)
-                    AppColors.blackColor, // End color of the gradient (bottom)
+                    AppColors.blueColor,
+                    AppColors.blackColor,
                   ],
                 ),
               ),

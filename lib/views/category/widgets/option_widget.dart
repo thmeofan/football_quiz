@@ -14,7 +14,6 @@ class OptionWidget extends StatelessWidget {
   final Question question;
   final ValueChanged<Option> onClickedOption;
 
-// final List<Question> questions;
   @override
   Widget build(BuildContext context) => SingleChildScrollView(
         child: Row(
@@ -27,11 +26,9 @@ class OptionWidget extends StatelessWidget {
   Widget buildOption(BuildContext context, Option option) {
     final isSelected = option == question.selectedOption;
 
-    // Set the color based on the option's value
     final color =
         option.text == 'true' ? AppColors.lightBlueColor : AppColors.redColor;
 
-    // Optionally add different styling if the option is selected
     final borderColor = isSelected ? Colors.white : Colors.transparent;
 
     return Expanded(

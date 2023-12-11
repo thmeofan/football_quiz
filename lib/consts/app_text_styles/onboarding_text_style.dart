@@ -15,13 +15,13 @@ class OnboardingTextStyle {
     fontSize: 11.0,
     fontWeight: FontWeight.w400,
     height: 18.0 / 11.0,
-    color: AppColors.lightGrayColor,
+    color: AppColors.lightGreyColor,
   );
   static const TextStyle miniIntro = TextStyle(
     fontFamily: 'Inter',
     fontSize: 12.0,
     fontWeight: FontWeight.w500,
     height: 18.0 / 12.0,
-    color: AppColors.lightGrayColor,
+    color: AppColors.lightGreyColor,
   );
 }

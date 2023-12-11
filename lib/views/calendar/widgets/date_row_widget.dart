@@ -27,9 +27,9 @@ class _DateRowWidgetState extends State<DateRowWidget> {
           data: ThemeData.light().copyWith(
             colorScheme: const ColorScheme.light(
               primary: AppColors.blueColor,
-              onPrimary: AppColors.lightGrayColor,
-              onSurface: AppColors.lightGrayColor,
-              surface: AppColors.lightGrayColor,
+              onPrimary: AppColors.lightGreyColor,
+              onSurface: AppColors.lightGreyColor,
+              surface: AppColors.lightGreyColor,
             ),
             dialogTheme: const DialogTheme(
               shape: RoundedRectangleBorder(
@@ -42,8 +42,8 @@ class _DateRowWidgetState extends State<DateRowWidget> {
               ),
             ),
             textTheme: const TextTheme(
-              subtitle1: TextStyle(color: AppColors.lightGrayColor),
-              headline4: TextStyle(color: AppColors.lightGrayColor),
+              subtitle1: TextStyle(color: AppColors.lightGreyColor),
+              headline4: TextStyle(color: AppColors.lightGreyColor),
               bodyText2: TextStyle(color: AppColors.whiteColor),
             ),
           ),
@@ -75,7 +75,7 @@ class _DateRowWidgetState extends State<DateRowWidget> {
             'assets/icons/calendar-days.svg',
             color: isIconClicked
                 ? AppColors.lightBlueColor
-                : AppColors.lightGrayColor,
+                : AppColors.lightGreyColor,
           ),
           onPressed: () => _presentDatePicker(context),
         ),

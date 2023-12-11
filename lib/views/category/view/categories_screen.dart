@@ -8,13 +8,11 @@ import 'package:football_quiz/views/category/view/quiz_screen.dart';
 import 'package:football_quiz/views/category/widgets/category_button.dart';
 
 import '../../../data/models/quiz_model.dart';
-import '../../../util/app_routes.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});
 
   void navigateToQuiz(BuildContext context, List<Question> questions) {
-    // Logic to reset the quiz questions before navigating to the quiz screen
     void resetQuestions() {
       for (var question in questions) {
         question.isLocked = false;
@@ -25,7 +23,7 @@ class CategoriesScreen extends StatelessWidget {
     Navigator.of(context).push(MaterialPageRoute(
       builder: (context) => QuizScreen(
         questions: questions,
-        onRetakeQuiz: resetQuestions, // Provide the reset callback
+        onRetakeQuiz: resetQuestions,
       ),
     ));
   }
@@ -43,10 +41,10 @@ class CategoriesScreen extends StatelessWidget {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/background.png'),
-            fit: BoxFit.cover, // Cover the entire screen area
+            fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
               Colors.transparent.withOpacity(1),
-              BlendMode.dstATop, // Darken the background image
+              BlendMode.dstATop,
             ),
           ),
         ),
